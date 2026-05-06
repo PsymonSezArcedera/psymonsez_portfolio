@@ -2,52 +2,54 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="bg-grid relative flex min-h-screen items-center px-6 py-24 sm:px-10"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 pt-16 pb-32 md:px-8 md:pb-48"
     >
-      <div className="mx-auto w-full max-w-5xl">
-        <p className="font-mono text-sm text-accent sm:text-base">
-          ~/psymon —main &gt;
-        </p>
+      {/* Subtle accent glow — top right, almost imperceptible */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 -top-32 h-160 w-160"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(99, 102, 241, 0.08), transparent 60%)",
+        }}
+      />
 
-        <h1 className="font-heading mt-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl xl:text-7xl">
+      <div className="relative mx-auto w-full max-w-3xl">
+        {/* Availability indicator */}
+        <div className="flex items-center gap-2.5 text-xs font-medium uppercase tracking-[0.15em] text-foreground-muted">
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+          </span>
+          Available for work
+        </div>
+
+        <h1 className="mt-8 text-5xl font-semibold tracking-[-0.03em] md:text-7xl">
           Psymon Sez Arcedera
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-          <span>
-            Full-Stack Developer building AI-powered products and enterprise
-            systems
-          </span>
-          <span aria-hidden="true" className="terminal-cursor" />
+        <p className="mt-6 max-w-2xl text-xl text-foreground-muted md:text-2xl">
+          Building AI-powered products and enterprise systems.
         </p>
 
-        <dl className="mt-10 inline-block border border-border bg-card p-4 font-mono text-sm leading-6 sm:text-[0.9rem]">
-          <div className="flex gap-3">
-            <dt className="text-muted-foreground">STATUS:</dt>
-            <dd>AI SWE Intern @ Ten X Development</dd>
-          </div>
-          <div className="flex gap-3">
-            <dt className="text-muted-foreground">LOCATION:</dt>
-            <dd>Calabarzon, PH</dd>
-          </div>
-          <div className="flex gap-3">
-            <dt className="text-muted-foreground">OPEN_TO:</dt>
-            <dd>SWE &amp; AI Developer roles</dd>
-          </div>
-        </dl>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground-muted md:text-lg">
+          Currently an AI Software Developer Intern at Ten X Development and CS
+          senior at UPLB. Open to full-time roles in software and AI engineering
+          starting mid-2026.
+        </p>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           <a
             href="#projects"
-            className="inline-flex items-center justify-center border border-foreground bg-foreground px-5 py-2.5 font-mono text-sm font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/90"
           >
-            [ View Projects ]
+            View Work
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center border border-border bg-transparent px-5 py-2.5 font-mono text-sm font-medium text-foreground transition-colors hover:border-accent-secondary hover:text-accent-secondary"
+            className="inline-flex items-center justify-center rounded-lg border border-border-strong px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-200 hover:border-foreground"
           >
-            [ Get in Touch ]
+            Get in Touch
           </a>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Nav } from "./components/nav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Psymon Sez Arcedera — Full-Stack Developer",
   description:
-    "Full-Stack Developer building AI-powered products and enterprise systems. CS senior at UPLB, DOST-SEI Merit Scholar, AI SWE Intern at Ten X Development.",
+    "Building AI-powered products and enterprise systems. CS senior at UPLB, DOST scholar.",
 };
 
 export default function RootLayout({
@@ -26,10 +27,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark h-full scroll-smooth antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }
