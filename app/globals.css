@@ -5,174 +5,124 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Surfaces */
   --color-background: var(--background);
-  --color-background-elevated: var(--background-elevated);
-  --color-background-overlay: var(--background-overlay);
-
-  /* Text */
   --color-foreground: var(--foreground);
-  --color-foreground-muted: var(--foreground-muted);
-  --color-foreground-subtle: var(--foreground-subtle);
-
-  /* Borders */
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-
-  /* Accent */
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent-subtle: var(--accent-subtle);
-
-  /* Semantic */
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-destructive: var(--destructive);
-
-  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-
-  /* shadcn token aliases — primitives map onto the design tokens above */
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
+  --font-heading: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
-
-  --radius-sm: calc(var(--radius) * 0.5);
-  --radius-md: calc(var(--radius) * 0.75);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.5);
-  --radius-2xl: calc(var(--radius) * 2);
-  --radius-3xl: calc(var(--radius) * 2.5);
-  --radius-4xl: calc(var(--radius) * 3);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 /*
- * Design tokens — dark-first per CLAUDE.md.
- * shadcn primitives are mapped onto these so a single token edit propagates
- * through cards, buttons, inputs, etc.
+ * Portfolio palette — terminal/code aesthetic, dark-default.
+ * Maps shadcn tokens onto the palette defined in CLAUDE.md so any
+ * shadcn primitive inherits the correct surface, border, and accent colors.
  */
 :root {
-  --background: #fafafa;
-  --background-elevated: #ffffff;
-  --background-overlay: #f4f4f5;
-
-  --foreground: #0a0a0b;
-  --foreground-muted: #52525b;
-  --foreground-subtle: #71717a;
-
-  --border: #e4e4e7;
-  --border-strong: #d4d4d8;
-
-  --accent: #6366f1;
-  --accent-foreground: #ffffff;
-  --accent-subtle: rgba(99, 102, 241, 0.08);
-
-  --success: #10b981;
-  --warning: #f59e0b;
+  --background: #0a0a0a;
+  --foreground: #e4e4e7;
+  --card: #18181b;
+  --card-foreground: #e4e4e7;
+  --popover: #18181b;
+  --popover-foreground: #e4e4e7;
+  --primary: #e4e4e7;
+  --primary-foreground: #0a0a0a;
+  --secondary: #27272a;
+  --secondary-foreground: #e4e4e7;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --accent: #00ff88;
+  --accent-foreground: #0a0a0a;
+  --accent-secondary: #00d4ff;
   --destructive: #ef4444;
-
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #00d4ff;
+  --chart-1: #00ff88;
+  --chart-2: #00d4ff;
+  --chart-3: #a1a1aa;
+  --chart-4: #71717a;
+  --chart-5: #52525b;
   --radius: 0.5rem;
-
-  /* shadcn aliases */
-  --card: var(--background-elevated);
-  --card-foreground: var(--foreground);
-  --popover: var(--background-elevated);
-  --popover-foreground: var(--foreground);
-  --primary: var(--accent);
-  --primary-foreground: var(--accent-foreground);
-  --secondary: var(--background-overlay);
-  --secondary-foreground: var(--foreground);
-  --muted: var(--background-overlay);
-  --muted-foreground: var(--foreground-muted);
-  --input: var(--border);
-  --ring: var(--accent);
-
-  --chart-1: var(--accent);
-  --chart-2: var(--success);
-  --chart-3: var(--foreground-muted);
-  --chart-4: var(--foreground-subtle);
-  --chart-5: var(--border-strong);
-
-  --sidebar: var(--background);
-  --sidebar-foreground: var(--foreground);
-  --sidebar-primary: var(--accent);
-  --sidebar-primary-foreground: var(--accent-foreground);
-  --sidebar-accent: var(--background-elevated);
-  --sidebar-accent-foreground: var(--foreground);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--accent);
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #e4e4e7;
+  --sidebar-primary: #e4e4e7;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #18181b;
+  --sidebar-accent-foreground: #e4e4e7;
+  --sidebar-border: #27272a;
+  --sidebar-ring: #00d4ff;
 }
 
 .dark {
-  --background: #fafafa;
-  --background-elevated: #ffffff;
-  --background-overlay: #f4f4f5;
-
-  --foreground: #0a0a0b;
-  --foreground-muted: #52525b;
-  --foreground-subtle: #71717a;
-
-  --border: #e4e4e7;
-  --border-strong: #d4d4d8;
-
-  --accent: #6366f1;
-  --accent-foreground: #ffffff;
-  --accent-subtle: rgba(99, 102, 241, 0.08);
-
-  --success: #10b981;
-  --warning: #f59e0b;
+  --background: #0a0a0a;
+  --foreground: #e4e4e7;
+  --card: #18181b;
+  --card-foreground: #e4e4e7;
+  --popover: #18181b;
+  --popover-foreground: #e4e4e7;
+  --primary: #e4e4e7;
+  --primary-foreground: #0a0a0a;
+  --secondary: #27272a;
+  --secondary-foreground: #e4e4e7;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --accent: #00ff88;
+  --accent-foreground: #0a0a0a;
+  --accent-secondary: #00d4ff;
   --destructive: #ef4444;
-
-  --card: var(--background-elevated);
-  --card-foreground: var(--foreground);
-  --popover: var(--background-elevated);
-  --popover-foreground: var(--foreground);
-  --primary: var(--accent);
-  --primary-foreground: var(--accent-foreground);
-  --secondary: var(--background-overlay);
-  --secondary-foreground: var(--foreground);
-  --muted: var(--background-overlay);
-  --muted-foreground: var(--foreground-muted);
-  --input: var(--border);
-  --ring: var(--accent);
-
-  --chart-1: var(--accent);
-  --chart-2: var(--success);
-  --chart-3: var(--foreground-muted);
-  --chart-4: var(--foreground-subtle);
-  --chart-5: var(--border-strong);
-
-  --sidebar: var(--background);
-  --sidebar-foreground: var(--foreground);
-  --sidebar-primary: var(--accent);
-  --sidebar-primary-foreground: var(--accent-foreground);
-  --sidebar-accent: var(--background-elevated);
-  --sidebar-accent-foreground: var(--foreground);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--accent);
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #00d4ff;
+  --chart-1: #00ff88;
+  --chart-2: #00d4ff;
+  --chart-3: #a1a1aa;
+  --chart-4: #71717a;
+  --chart-5: #52525b;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #e4e4e7;
+  --sidebar-primary: #e4e4e7;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #18181b;
+  --sidebar-accent-foreground: #e4e4e7;
+  --sidebar-border: #27272a;
+  --sidebar-ring: #00d4ff;
 }
 
 @layer base {
@@ -181,9 +131,40 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    font-feature-settings: "ss01", "cv11";
+  }
+  html {
+    @apply font-sans;
   }
   ::selection {
     background: var(--accent);
     color: var(--accent-foreground);
   }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-geist-mono);
+  }
+
+  /* Subtle 1px grid backdrop — opt-in via class on a section. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Blinking terminal cursor — pair with `after:content-['_']` or similar. */
+  .terminal-cursor::after {
+    content: "_";
+    margin-left: 0.15em;
+    animation: terminal-blink 1.1s steps(1) infinite;
+    color: var(--accent);
+  }
+}
+
+@keyframes terminal-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
