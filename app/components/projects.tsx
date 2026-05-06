@@ -41,7 +41,7 @@ export function Projects() {
     <section id="projects" className="px-6 py-24 sm:px-10 md:py-32">
       <div className="mx-auto max-w-5xl">
         <p className="font-mono text-sm text-muted-foreground">
-          // 01. projects
+          // 03. projects
         </p>
         <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           Selected Work
