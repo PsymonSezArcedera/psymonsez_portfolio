@@ -1,3 +1,4 @@
+import { About } from "./components/about";
 import { Hero } from "./components/hero";
 import { Projects } from "./components/projects";
 
@@ -6,6 +7,7 @@ export default function Home() {
     <main className="flex-1">
       <Hero />
       <Projects />
+      <About />
     </main>
   );
 }
