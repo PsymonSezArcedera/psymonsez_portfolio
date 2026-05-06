@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type ProjectStatus = "SHIPPED" | "IN PRODUCTION" | "PUBLISHED";
@@ -18,6 +19,8 @@ type Project = {
   stack: string[];
   highlight: string;
   links: ProjectLink[];
+  /** Optional background image. Drop a file in /public/projects/ and reference it here, e.g. "/projects/paralink.png". */
+  image?: string;
 };
 
 const statusStyles: Record<ProjectStatus, string> = {
@@ -39,6 +42,7 @@ const projects: Project[] = [
       { label: "github", url: "#" },
       { label: "paper", url: "#" },
     ],
+    // image: "/projects/paralink.png",
   },
   {
     name: "ICS-ASTRA",
@@ -49,6 +53,7 @@ const projects: Project[] = [
     stack: ["Next.js", "PostgreSQL", "Express.js", "Vercel"],
     highlight: "Indexed search reduced query time on large record sets",
     links: [{ label: "github", url: "#" }],
+    // image: "/projects/ics-astra.png",
   },
   {
     name: "Modeling Merit",
@@ -59,6 +64,7 @@ const projects: Project[] = [
     stack: ["Python", "Scikit-learn", "Naïve Bayes"],
     highlight: "Published research — SSRN",
     links: [{ label: "ssrn", url: "#" }],
+    // image: "/projects/modeling-merit.png",
   },
 ];
 
@@ -334,8 +340,40 @@ function Tile({
           : "border-border"
       }`}
     >
-      {/* Background grid */}
-      <div className="bg-grid absolute inset-0 opacity-50" aria-hidden="true" />
+      {/* Background image (or placeholder when not yet provided) */}
+      <div className="absolute inset-0" aria-hidden="true">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 240px, 280px"
+            className="object-cover"
+            priority={isFocused}
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+            <span className="font-heading select-none text-[8rem] font-bold leading-none text-foreground/[0.08]">
+              {project.name.charAt(0)}
+            </span>
+            <span className="absolute bottom-12 font-mono text-[0.6rem] uppercase tracking-widest text-muted-foreground/40">
+              [ image slot ]
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Grid texture overlay */}
+      <div
+        className="bg-grid absolute inset-0 opacity-40"
+        aria-hidden="true"
+      />
+
+      {/* Dark scrim — keeps title + chrome legible regardless of image */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/55 to-background/85"
+      />
 
       {/* Top: terminal path + status */}
       <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-border bg-background/60 px-3 py-2 backdrop-blur-sm">
@@ -350,11 +388,11 @@ function Tile({
       </div>
 
       {/* Center: project name + tagline */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center">
-        <h3 className="font-heading text-2xl font-bold tracking-tight md:text-[1.7rem]">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-5 text-center">
+        <h3 className="font-heading text-2xl font-bold tracking-tight text-foreground [text-shadow:_0_2px_12px_rgb(0_0_0_/_0.7)] md:text-[1.7rem]">
           {project.name}
         </h3>
-        <p className="mt-3 font-mono text-[0.7rem] leading-relaxed text-muted-foreground">
+        <p className="mt-3 font-mono text-[0.7rem] leading-relaxed text-foreground/80 [text-shadow:_0_1px_6px_rgb(0_0_0_/_0.7)]">
           {project.tagline}
         </p>
       </div>
