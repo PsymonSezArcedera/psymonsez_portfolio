@@ -15,10 +15,6 @@ export function Footer() {
             <span className="text-accent">{"©"}</span> {year} Psymon
             Sez Arcedera
           </span>
-          <span aria-hidden="true" className="opacity-50">
-            ·
-          </span>
-          <span>built with Next.js, Tailwind, and Framer Motion</span>
         </div>
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">

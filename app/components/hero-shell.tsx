@@ -62,13 +62,19 @@ function scrollToId(id: string) {
 
 export function HeroShell() {
   const [history, setHistory] = useState<Line[]>([
-    { kind: "info", text: "type 'help' to explore" },
+    {
+      kind: "info",
+      text: "> commands: help · projects · whoami · contact · clear",
+    },
   ]);
   const [input, setInput] = useState("");
   const [cmdLog, setCmdLog] = useState<string[]>([]);
   const [logIdx, setLogIdx] = useState<number | null>(null);
+  const [focused, setFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+
+  const showIdleCursor = !focused && input.length === 0;
 
   const append = (lines: Line[]) =>
     setHistory((h) => [...h, ...lines].slice(-40));
@@ -158,7 +164,7 @@ export function HeroShell() {
   return (
     <div
       onClick={() => inputRef.current?.focus()}
-      className="max-w-2xl cursor-text border border-border bg-card font-mono text-sm"
+      className="max-w-2xl cursor-text border border-border bg-card font-mono text-sm transition-colors hover:border-accent/50"
     >
       <div className="flex items-center gap-2 border-b border-border px-4 py-2 text-xs text-muted-foreground">
         <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
@@ -188,18 +194,28 @@ export function HeroShell() {
         </div>
         <div className="mt-1 flex items-center gap-2">
           <span className="shrink-0 text-accent">{PROMPT}</span>
-          <input
-            ref={inputRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKey}
-            spellCheck={false}
-            autoCapitalize="off"
-            autoCorrect="off"
-            aria-label="terminal input — type 'help' to explore"
-            className="flex-1 bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/50"
-            placeholder="type a command…"
-          />
+          <div className="relative flex-1">
+            <input
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKey}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              spellCheck={false}
+              autoCapitalize="off"
+              autoCorrect="off"
+              aria-label="terminal input, type 'help' to explore"
+              className="w-full bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/40"
+              placeholder={showIdleCursor ? "" : "type a command…"}
+            />
+            {showIdleCursor && (
+              <span
+                aria-hidden="true"
+                className="terminal-cursor pointer-events-none absolute left-0 top-1/2 -translate-y-1/2"
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
