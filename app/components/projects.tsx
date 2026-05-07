@@ -3,6 +3,19 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { IconType } from "react-icons";
+import {
+  SiExpo,
+  SiExpress,
+  SiFirebase,
+  SiGooglemaps,
+  SiNextdotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiScikitlearn,
+  SiVercel,
+} from "react-icons/si";
 import { Reveal } from "./reveal";
 
 type ProjectStatus = "SHIPPED" | "IN PRODUCTION" | "PUBLISHED";
@@ -12,12 +25,18 @@ type ProjectLink = {
   url: string;
 };
 
+type Tech = {
+  label: string;
+  /** Optional logo. Items without an icon render as a small text pill. */
+  icon?: IconType;
+};
+
 type Project = {
   name: string;
   status: ProjectStatus;
   tagline: string;
   description: string;
-  stack: string[];
+  stack: Tech[];
   highlight: string;
   links: ProjectLink[];
   /** Optional background image. Drop a file in /public/projects/ and reference it here, e.g. "/projects/paralink.png". */
@@ -37,7 +56,13 @@ const projects: Project[] = [
     tagline: "Real-time jeepney tracking for San Pablo City commuters",
     description:
       "Mobile app with three user roles (commuter, driver, admin) for tracking jeepneys in real time. Built and tested with 25 real users in a usability evaluation. My undergraduate Special Problem.",
-    stack: ["React Native", "Expo", "Firebase", "Google Maps API", "OSRM"],
+    stack: [
+      { label: "React Native", icon: SiReact },
+      { label: "Expo", icon: SiExpo },
+      { label: "Firebase", icon: SiFirebase },
+      { label: "Google Maps", icon: SiGooglemaps },
+      { label: "OSRM" },
+    ],
     highlight: 'SUS score: 91.1 (Grade A+) — "Best imaginable"',
     links: [
       { label: "github", url: "#" },
@@ -51,7 +76,12 @@ const projects: Project[] = [
     tagline: "Alumni network platform for UPLB ICS",
     description:
       "Backend developer on a team building an alumni network spanning multiple graduation batches. Implemented session-based auth, role-based access control, and optimized search with indexed database fields.",
-    stack: ["Next.js", "PostgreSQL", "Express.js", "Vercel"],
+    stack: [
+      { label: "Next.js", icon: SiNextdotjs },
+      { label: "PostgreSQL", icon: SiPostgresql },
+      { label: "Express.js", icon: SiExpress },
+      { label: "Vercel", icon: SiVercel },
+    ],
     highlight: "Indexed search reduced query time on large record sets",
     links: [{ label: "github", url: "#" }],
     // image: "/projects/ics-astra.png",
@@ -62,7 +92,11 @@ const projects: Project[] = [
     tagline: "Naïve Bayes classifier for scholarship eligibility",
     description:
       "Co-authored research building an end-to-end classification pipeline to estimate scholarship eligibility from student attributes. Published on SSRN.",
-    stack: ["Python", "Scikit-learn", "Naïve Bayes"],
+    stack: [
+      { label: "Python", icon: SiPython },
+      { label: "scikit-learn", icon: SiScikitlearn },
+      { label: "Naïve Bayes" },
+    ],
     highlight: "Published research — SSRN",
     links: [{ label: "ssrn", url: "#" }],
     // image: "/projects/modeling-merit.png",
@@ -274,15 +308,28 @@ export function Projects() {
                 {active.description}
               </p>
 
-              <ul className="mt-5 flex flex-wrap gap-1.5">
-                {active.stack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground"
-                  >
-                    {tech}
-                  </li>
-                ))}
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {active.stack.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <li
+                      key={tech.label}
+                      title={tech.label}
+                      className="flex h-9 min-w-9 items-center justify-center border border-border bg-card px-2 text-muted-foreground"
+                    >
+                      {Icon ? (
+                        <>
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                          <span className="sr-only">{tech.label}</span>
+                        </>
+                      ) : (
+                        <span className="font-mono text-[0.7rem]">
+                          {tech.label}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
 
               <div className="mt-6 border-t border-border pt-4">
