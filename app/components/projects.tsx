@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Reveal } from "./reveal";
 
 type ProjectStatus = "SHIPPED" | "IN PRODUCTION" | "PUBLISHED";
 
@@ -171,21 +172,23 @@ export function Projects() {
       className="relative px-6 py-24 sm:px-10 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
-        <p className="font-mono text-sm text-muted-foreground">
-          // 03. projects
-        </p>
-        <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-          Selected Work
-        </h2>
-        <p className="mt-4 max-w-xl text-muted-foreground">
-          Pick a project to load.{" "}
-          <span className="hidden sm:inline">
-            Use <span className="font-mono text-foreground">←</span>{" "}
-            <span className="font-mono text-foreground">→</span> to browse,{" "}
-            <span className="font-mono text-foreground">Enter</span> to open.
-          </span>
-          <span className="sm:hidden">Swipe to browse.</span>
-        </p>
+        <Reveal>
+          <p className="font-mono text-sm text-muted-foreground">
+            // 03. projects
+          </p>
+          <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            Selected Work
+          </h2>
+          <p className="mt-4 max-w-xl text-muted-foreground">
+            Pick a project to load.{" "}
+            <span className="hidden sm:inline">
+              Use <span className="font-mono text-foreground">←</span>{" "}
+              <span className="font-mono text-foreground">→</span> to browse,{" "}
+              <span className="font-mono text-foreground">Enter</span> to open.
+            </span>
+            <span className="sm:hidden">Swipe to browse.</span>
+          </p>
+        </Reveal>
 
         {/* Status bar: index + keyboard hint */}
         <div className="mt-12 flex items-center justify-between font-mono text-xs text-muted-foreground">

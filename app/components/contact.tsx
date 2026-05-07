@@ -2,6 +2,7 @@ import type { IconType } from "react-icons";
 import { FaLinkedin } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { SiGithub } from "react-icons/si";
+import { Reveal } from "./reveal";
 
 type Link = {
   label: string;
@@ -34,7 +35,7 @@ const links: Link[] = [
 export function Contact() {
   return (
     <section id="contact" className="px-6 py-24 sm:px-10 md:py-32">
-      <div className="mx-auto max-w-5xl">
+      <Reveal className="mx-auto max-w-5xl">
         <p className="font-mono text-sm text-muted-foreground">
           // 04. contact
         </p>
@@ -87,7 +88,7 @@ export function Contact() {
             })}
           </ul>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

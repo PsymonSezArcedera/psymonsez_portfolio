@@ -1,9 +1,10 @@
+import { Reveal } from "./reveal";
 import { TechMarquee } from "./tech-marquee";
 
 export function About() {
   return (
     <section id="about" className="py-24 md:py-32">
-      <div className="mx-auto max-w-5xl px-6 sm:px-10">
+      <Reveal className="mx-auto max-w-5xl px-6 sm:px-10">
         <p className="font-mono text-sm text-muted-foreground">// 01. about</p>
         <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           About
@@ -39,7 +40,7 @@ export function About() {
             </p>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       <div className="mt-14 md:mt-20">
         <p className="mx-auto mb-6 max-w-5xl px-6 font-mono text-xs text-muted-foreground sm:px-10">
