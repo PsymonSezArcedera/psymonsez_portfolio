@@ -169,10 +169,21 @@ export function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative px-6 py-24 sm:px-10 md:py-32"
+      className="relative overflow-hidden px-6 py-24 sm:px-10 md:py-32"
     >
+      <span aria-hidden="true" className="section-watermark">
+        03
+      </span>
       <div className="mx-auto max-w-5xl">
-        <Reveal>
+        <Reveal className="relative">
+          <span
+            aria-hidden="true"
+            className="absolute -top-10 left-0 hidden h-6 w-px bg-border md:block"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute -top-3 left-0 hidden h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent md:block"
+          />
           <p className="font-mono text-sm text-muted-foreground">
             // 03. projects
           </p>

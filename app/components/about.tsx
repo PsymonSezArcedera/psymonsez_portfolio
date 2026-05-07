@@ -3,9 +3,27 @@ import { TechMarquee } from "./tech-marquee";
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <Reveal className="mx-auto max-w-5xl px-6 sm:px-10">
-        <p className="font-mono text-sm text-muted-foreground">// 01. about</p>
+    <section
+      id="about"
+      className="relative overflow-hidden py-24 md:py-32"
+    >
+      <span aria-hidden="true" className="section-watermark">
+        01
+      </span>
+      <Reveal className="relative mx-auto max-w-5xl px-6 sm:px-10">
+        <div className="relative">
+          <span
+            aria-hidden="true"
+            className="absolute -top-10 left-0 hidden h-6 w-px bg-border md:block"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute -top-3 left-0 hidden h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent md:block"
+          />
+          <p className="font-mono text-sm text-muted-foreground">
+            // 01. about
+          </p>
+        </div>
         <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           About
         </h2>

@@ -204,6 +204,27 @@
             mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   }
 
+  /* Giant ghosted section number watermark — pin to the right edge of the
+     section content area, very low opacity so it sits behind everything. */
+  .section-watermark {
+    position: absolute;
+    right: 1rem;
+    top: 4rem;
+    pointer-events: none;
+    user-select: none;
+    font-family: var(--font-geist-mono);
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(228 228 231 / 0.03);
+    font-size: 8rem;
+  }
+  @media (min-width: 640px) {
+    .section-watermark { right: 2.5rem; font-size: 12rem; }
+  }
+  @media (min-width: 1024px) {
+    .section-watermark { font-size: 18rem; top: 5rem; }
+  }
+
   /* Hide the native scrollbar on horizontal carousels while keeping scroll behavior. */
   .no-scrollbar {
     scrollbar-width: none;

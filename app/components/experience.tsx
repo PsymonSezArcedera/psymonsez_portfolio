@@ -57,16 +57,29 @@ export function Experience() {
       id="experience"
       className="relative overflow-hidden px-6 py-24 sm:px-10 md:py-32"
     >
+      <span aria-hidden="true" className="section-watermark">
+        02
+      </span>
       <div className="mx-auto max-w-5xl">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="font-mono text-sm text-muted-foreground"
+          className="relative"
         >
-          // 02. experience
-        </motion.p>
+          <span
+            aria-hidden="true"
+            className="absolute -top-10 left-0 hidden h-6 w-px bg-border md:block"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute -top-3 left-0 hidden h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent md:block"
+          />
+          <p className="font-mono text-sm text-muted-foreground">
+            // 02. experience
+          </p>
+        </motion.div>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
