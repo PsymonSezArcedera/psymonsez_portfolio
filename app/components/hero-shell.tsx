@@ -127,40 +127,49 @@ export function HeroShell() {
   return (
     <div
       onClick={() => inputRef.current?.focus()}
-      className="max-w-2xl cursor-text border border-border bg-card p-3 font-mono text-sm"
+      className="max-w-2xl cursor-text border border-border bg-card font-mono text-sm"
     >
-      <div
-        ref={outputRef}
-        className="no-scrollbar max-h-40 overflow-y-auto pr-1"
-      >
-        {history.map((line, i) => (
-          <div
-            key={i}
-            className={cn(
-              "leading-6 whitespace-pre-wrap",
-              line.kind === "input" && "text-accent",
-              line.kind === "error" && "text-destructive",
-              line.kind === "info" && "italic text-muted-foreground",
-            )}
-          >
-            {line.text}
-          </div>
-        ))}
+      <div className="flex items-center gap-2 border-b border-border px-4 py-2 text-xs text-muted-foreground">
+        <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent/60" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent-secondary/60" />
+        <span className="ml-2">psymon@portfolio: ~</span>
       </div>
-      <div className="mt-1 flex items-center gap-2">
-        <span className="shrink-0 text-accent">{PROMPT}</span>
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKey}
-          spellCheck={false}
-          autoCapitalize="off"
-          autoCorrect="off"
-          aria-label="terminal input — type 'help' to explore"
-          className="flex-1 bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/50"
-          placeholder="type a command…"
-        />
+
+      <div className="p-3">
+        <div
+          ref={outputRef}
+          className="no-scrollbar max-h-40 overflow-y-auto pr-1"
+        >
+          {history.map((line, i) => (
+            <div
+              key={i}
+              className={cn(
+                "leading-6 whitespace-pre-wrap",
+                line.kind === "input" && "text-accent",
+                line.kind === "error" && "text-destructive",
+                line.kind === "info" && "italic text-muted-foreground",
+              )}
+            >
+              {line.text}
+            </div>
+          ))}
+        </div>
+        <div className="mt-1 flex items-center gap-2">
+          <span className="shrink-0 text-accent">{PROMPT}</span>
+          <input
+            ref={inputRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKey}
+            spellCheck={false}
+            autoCapitalize="off"
+            autoCorrect="off"
+            aria-label="terminal input — type 'help' to explore"
+            className="flex-1 bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/50"
+            placeholder="type a command…"
+          />
+        </div>
       </div>
     </div>
   );
