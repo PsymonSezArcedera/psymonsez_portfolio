@@ -7,6 +7,7 @@ import {
   useState,
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
+  type RefObject,
 } from "react";
 import { cn } from "@/lib/utils";
 
@@ -67,7 +68,12 @@ function scrollToId(id: string) {
   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-export function HeroShell() {
+type HeroShellProps = {
+  /** Section ref the window is allowed to roam inside. Drag is disabled if absent. */
+  constraintsRef?: RefObject<HTMLElement | null>;
+};
+
+export function HeroShell({ constraintsRef }: HeroShellProps) {
   const [history, setHistory] = useState<Line[]>([
     {
       kind: "info",
@@ -81,15 +87,11 @@ export function HeroShell() {
   const [draggable, setDraggable] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
-  const constraintsRef = useRef<HTMLElement | null>(null);
   const dragControls = useDragControls();
 
-  // Drag is desktop-only — on touch, it would fight the page scroll. Anchor
-  // the constraint to <main> so the window can roam past the hero into the
-  // sections below, but not into the footer or behind the nav.
+  // Drag is desktop-only — on touch, it would fight the page scroll.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    constraintsRef.current = document.querySelector("main");
     const mq = window.matchMedia("(min-width: 768px) and (pointer: fine)");
     setDraggable(mq.matches);
     const onChange = (e: MediaQueryListEvent) => setDraggable(e.matches);
@@ -98,7 +100,7 @@ export function HeroShell() {
   }, []);
 
   const showIdleCursor = !focused && input.length === 0;
-  const dragEnabled = draggable;
+  const dragEnabled = draggable && Boolean(constraintsRef);
 
   function handleTitleBarPointerDown(e: ReactPointerEvent<HTMLDivElement>) {
     if (!dragEnabled) return;
@@ -200,7 +202,7 @@ export function HeroShell() {
       dragElastic={0.08}
       whileDrag={{ scale: 1.005 }}
       onClick={() => inputRef.current?.focus()}
-      className="relative z-40 max-w-2xl cursor-text border border-border bg-card font-mono text-sm shadow-lg shadow-black/40 transition-colors hover:border-accent/50"
+      className="max-w-2xl cursor-text border border-border bg-card font-mono text-sm shadow-sm transition-colors hover:border-accent/50"
     >
       <div
         onPointerDown={handleTitleBarPointerDown}

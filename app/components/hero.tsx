@@ -73,7 +73,7 @@ export function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="bg-grid relative flex min-h-screen items-center px-6 py-24 sm:px-10"
+      className="bg-grid relative flex min-h-screen items-center overflow-hidden px-6 py-24 sm:px-10"
     >
       {/* Cursor-reactive bright grid revealed by a radial mask. */}
       <div
@@ -141,7 +141,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div {...fade(prefersReduce ? 0 : 2.05)} className="mt-12">
-          <HeroShell />
+          <HeroShell constraintsRef={sectionRef} />
         </motion.div>
       </div>
     </section>
