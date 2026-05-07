@@ -1,11 +1,16 @@
 import type { IconType } from "react-icons";
+import { FaJava } from "react-icons/fa";
 import {
+  SiDocker,
   SiFirebase,
   SiGit,
+  SiJavascript,
   SiLaravel,
+  SiMariadb,
+  SiMongodb,
+  SiMysql,
   SiNextdotjs,
   SiOpenai,
-  SiPhp,
   SiPostgresql,
   SiPython,
   SiReact,
@@ -15,12 +20,13 @@ import {
   SiVercel,
 } from "react-icons/si";
 
-type Tech = { icon: IconType; label: string };
+type Tech = { label: string; icon?: IconType };
 
 const languages: Tech[] = [
+  { icon: SiJavascript, label: "JavaScript" },
   { icon: SiTypescript, label: "TypeScript" },
   { icon: SiPython, label: "Python" },
-  { icon: SiPhp, label: "PHP" },
+  { icon: FaJava, label: "Java" },
 ];
 
 const frameworks: Tech[] = [
@@ -34,18 +40,23 @@ const frameworks: Tech[] = [
 
 const databases: Tech[] = [
   { icon: SiPostgresql, label: "PostgreSQL" },
+  { icon: SiMongodb, label: "MongoDB" },
   { icon: SiFirebase, label: "Firebase" },
+  { icon: SiMysql, label: "MySQL" },
+  { icon: SiMariadb, label: "MariaDB" },
 ];
 
 const tools: Tech[] = [
   { icon: SiVercel, label: "Vercel" },
   { icon: SiGit, label: "Git" },
+  { icon: SiDocker, label: "Docker" },
+  { label: "Claude Code" },
 ];
 
 function Pill({ icon: Icon, label }: Tech) {
   return (
     <div className="flex shrink-0 items-center gap-3 border border-border bg-card px-4 py-2.5 font-mono text-sm text-foreground">
-      <Icon className="h-7 w-7 shrink-0" aria-hidden="true" />
+      {Icon && <Icon className="h-7 w-7 shrink-0" aria-hidden="true" />}
       <span>{label}</span>
     </div>
   );
