@@ -171,9 +171,6 @@ export function Projects() {
       id="projects"
       className="relative overflow-hidden px-6 py-24 sm:px-10 md:py-32"
     >
-      <span aria-hidden="true" className="section-watermark">
-        03
-      </span>
       <div className="mx-auto max-w-5xl">
         <Reveal className="relative">
           <span

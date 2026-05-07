@@ -38,9 +38,6 @@ export function Contact() {
       id="contact"
       className="relative overflow-hidden px-6 py-24 sm:px-10 md:py-32"
     >
-      <span aria-hidden="true" className="section-watermark">
-        04
-      </span>
       <Reveal className="relative mx-auto max-w-5xl">
         <span
           aria-hidden="true"

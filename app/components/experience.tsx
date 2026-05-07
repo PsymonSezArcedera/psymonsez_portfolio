@@ -57,9 +57,6 @@ export function Experience() {
       id="experience"
       className="relative overflow-hidden px-6 py-24 sm:px-10 md:py-32"
     >
-      <span aria-hidden="true" className="section-watermark">
-        02
-      </span>
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 8 }}

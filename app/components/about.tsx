@@ -7,9 +7,6 @@ export function About() {
       id="about"
       className="relative overflow-hidden py-24 md:py-32"
     >
-      <span aria-hidden="true" className="section-watermark">
-        01
-      </span>
       <Reveal className="relative mx-auto max-w-5xl px-6 sm:px-10">
         <div className="relative">
           <span
