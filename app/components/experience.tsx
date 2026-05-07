@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 type Role = {
   company: string;
@@ -14,6 +15,8 @@ type Role = {
   logFile: string;
   /** Path under /public/ for the company logo */
   logoSrc: string;
+  /** Use a white frame instead of the dark default — for logos that need contrast on dark backgrounds. */
+  logoLight?: boolean;
 };
 
 const roles: Role[] = [
@@ -36,6 +39,7 @@ const roles: Role[] = [
     period: "Jun 2025 – Aug 2025",
     logFile: "dost.log",
     logoSrc: "/dost.png",
+    logoLight: true,
     bullets: [
       "Records consolidation system across 10 government offices",
       "Full-stack delivery with Laravel, PHP, and Tailwind",
@@ -173,10 +177,15 @@ export function Experience() {
                   <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                     <div className="flex items-start gap-4">
                       <div
-                        className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden border border-border bg-background transition-colors duration-300 group-hover:border-accent-secondary sm:h-16 sm:w-16"
+                        className={cn(
+                          "relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden border border-border transition-colors duration-300 group-hover:border-accent-secondary sm:h-16 sm:w-16",
+                          role.logoLight ? "bg-white" : "bg-background",
+                        )}
                         aria-hidden="true"
                       >
-                        <div className="bg-grid absolute inset-0" />
+                        {!role.logoLight && (
+                          <div className="bg-grid absolute inset-0" />
+                        )}
                         <Image
                           src={role.logoSrc}
                           alt=""
