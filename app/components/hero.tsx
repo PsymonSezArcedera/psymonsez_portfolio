@@ -141,7 +141,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div {...fade(prefersReduce ? 0 : 2.05)} className="mt-12">
-          <HeroShell />
+          <HeroShell constraintsRef={sectionRef} />
         </motion.div>
       </div>
     </section>

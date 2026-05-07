@@ -1,6 +1,14 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent } from "react";
+import { motion, useDragControls } from "framer-motion";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+  type RefObject,
+} from "react";
 import { cn } from "@/lib/utils";
 
 type Line = {
@@ -60,7 +68,12 @@ function scrollToId(id: string) {
   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-export function HeroShell() {
+type HeroShellProps = {
+  /** Section ref the window is allowed to roam inside. Drag is disabled if absent. */
+  constraintsRef?: RefObject<HTMLElement | null>;
+};
+
+export function HeroShell({ constraintsRef }: HeroShellProps) {
   const [history, setHistory] = useState<Line[]>([
     {
       kind: "info",
@@ -71,10 +84,28 @@ export function HeroShell() {
   const [cmdLog, setCmdLog] = useState<string[]>([]);
   const [logIdx, setLogIdx] = useState<number | null>(null);
   const [focused, setFocused] = useState(false);
+  const [draggable, setDraggable] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+  const dragControls = useDragControls();
+
+  // Drag is desktop-only — on touch, it would fight the page scroll.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+    setDraggable(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setDraggable(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   const showIdleCursor = !focused && input.length === 0;
+  const dragEnabled = draggable && Boolean(constraintsRef);
+
+  function handleTitleBarPointerDown(e: ReactPointerEvent<HTMLDivElement>) {
+    if (!dragEnabled) return;
+    dragControls.start(e);
+  }
 
   const append = (lines: Line[]) =>
     setHistory((h) => [...h, ...lines].slice(-40));
@@ -162,11 +193,24 @@ export function HeroShell() {
   }
 
   return (
-    <div
+    <motion.div
+      drag={dragEnabled}
+      dragControls={dragControls}
+      dragListener={false}
+      dragConstraints={constraintsRef}
+      dragMomentum={false}
+      dragElastic={0.08}
+      whileDrag={{ scale: 1.005 }}
       onClick={() => inputRef.current?.focus()}
-      className="max-w-2xl cursor-text border border-border bg-card font-mono text-sm transition-colors hover:border-accent/50"
+      className="max-w-2xl cursor-text border border-border bg-card font-mono text-sm shadow-sm transition-colors hover:border-accent/50"
     >
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2 text-xs text-muted-foreground">
+      <div
+        onPointerDown={handleTitleBarPointerDown}
+        className={cn(
+          "flex select-none items-center gap-2 border-b border-border px-4 py-2 text-xs text-muted-foreground",
+          dragEnabled && "cursor-grab active:cursor-grabbing",
+        )}
+      >
         <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-accent/60" />
         <span className="h-2.5 w-2.5 rounded-full bg-accent-secondary/60" />
@@ -218,6 +262,6 @@ export function HeroShell() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
