@@ -17,6 +17,18 @@ const SECTIONS: Record<string, string> = {
   contact: "contact",
 };
 
+const COMMANDS = [
+  "help",
+  "whoami",
+  "projects",
+  "experience",
+  "about",
+  "contact",
+  "socials",
+  "ls",
+  "clear",
+];
+
 const HELP_LINES = [
   "available commands:",
   "  help        show this list",
@@ -121,6 +133,25 @@ export function HeroShell() {
         setLogIdx(next);
         setInput(cmdLog[next]);
       }
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      const partial = input.toLowerCase();
+      if (!partial) return;
+      const matches = COMMANDS.filter((c) => c.startsWith(partial));
+      if (matches.length === 0) return;
+      if (matches.length === 1) {
+        setInput(matches[0]);
+        return;
+      }
+      let prefix = matches[0];
+      for (const m of matches) {
+        while (!m.startsWith(prefix)) prefix = prefix.slice(0, -1);
+      }
+      if (prefix.length > partial.length) {
+        setInput(prefix);
+      } else {
+        append([{ kind: "output", text: matches.join("  ") }]);
+      }
     }
   }
 
@@ -146,7 +177,7 @@ export function HeroShell() {
               key={i}
               className={cn(
                 "leading-6 whitespace-pre-wrap",
-                line.kind === "input" && "text-accent",
+                line.kind === "input" && "text-accent-secondary",
                 line.kind === "error" && "text-destructive",
                 line.kind === "info" && "italic text-muted-foreground",
               )}
@@ -156,7 +187,7 @@ export function HeroShell() {
           ))}
         </div>
         <div className="mt-1 flex items-center gap-2">
-          <span className="shrink-0 text-accent">{PROMPT}</span>
+          <span className="shrink-0 text-accent-secondary">{PROMPT}</span>
           <input
             ref={inputRef}
             value={input}
@@ -166,7 +197,7 @@ export function HeroShell() {
             autoCapitalize="off"
             autoCorrect="off"
             aria-label="terminal input — type 'help' to explore"
-            className="flex-1 bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/50"
+            className="flex-1 bg-transparent text-foreground caret-accent-secondary outline-none placeholder:text-muted-foreground/50"
             placeholder="type a command…"
           />
         </div>
