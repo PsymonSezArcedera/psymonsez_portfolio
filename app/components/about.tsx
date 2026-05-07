@@ -37,21 +37,34 @@ export function About() {
 
           <div className="space-y-4 leading-relaxed">
             <p>
-              CS senior at UP Los Baños and a DOST-SEI Merit Scholar. I
-              specialize in full-stack development with a growing focus on
-              integrating AI into real products — the kind people actually
-              use, not demos.
+              I build software that solves real problems for real people.
             </p>
             <p className="text-muted-foreground">
-              Currently building admin dashboards and pose-detection kiosks at
-              Ten X Development. Earlier I shipped a real-time jeepney
-              tracking app for San Pablo City as my undergraduate Special
-              Problem, and was nominated to the Honor Society of the
-              Philippines (top 10% of batch).
+              I&apos;m a Computer Science student at the University of the
+              Philippines Los Baños and a DOST-SEI Merit Scholar, but most of
+              what I know I&apos;ve learned by shipping. As an AI Software
+              Developer Intern at Ten X Development, I&apos;ve helped deploy
+              production AI features across Metro Manila, including
+              pose-detection kiosks running in malls, and built admin
+              dashboard modules used by food chain clients to run their
+              day-to-day operations.
             </p>
             <p className="text-muted-foreground">
-              Outside of code: building public transit tech, hypertrophy
-              training, and Filipino culinary culture.
+              My work spans full-stack development, mobile apps, and applied
+              AI. React Native and Flutter on the front, Node.js, Python, and
+              Firebase on the back, with production exposure to LLM tooling
+              and computer vision. I care less about chasing every new
+              framework and more about making sure what I build actually
+              works for the user, for the team, and at scale.
+            </p>
+            <p className="text-muted-foreground">
+              When I&apos;m not coding, I&apos;m usually at the gym, hanging
+              out, or exploring different places.
+            </p>
+            <p>
+              I&apos;m currently open to software engineering and AI developer
+              opportunities. If you&apos;re building something interesting,
+              I&apos;d love to talk.
             </p>
           </div>
         </div>
