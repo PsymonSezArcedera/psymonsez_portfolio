@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 type Role = {
@@ -11,8 +12,8 @@ type Role = {
   bullets: string[];
   /** Filename used inside the terminal header (e.g. ten-x.log) */
   logFile: string;
-  /** Initials shown inside the logo placeholder */
-  logoInitial: string;
+  /** Path under /public/ for the company logo */
+  logoSrc: string;
 };
 
 const roles: Role[] = [
@@ -22,7 +23,7 @@ const roles: Role[] = [
     period: "Sep 2025 – Present",
     current: true,
     logFile: "ten-x.log",
-    logoInitial: "TX",
+    logoSrc: "/ten-x.png",
     bullets: [
       "Pose-detection kiosks deployed to 5 Metro Manila malls",
       "6 modules of an admin dashboard for a food chain client",
@@ -34,7 +35,7 @@ const roles: Role[] = [
     title: "Software Developer Intern",
     period: "Jun 2025 – Aug 2025",
     logFile: "dost.log",
-    logoInitial: "DOST",
+    logoSrc: "/dost.png",
     bullets: [
       "Records consolidation system across 10 government offices",
       "Full-stack delivery with Laravel, PHP, and Tailwind",
@@ -171,15 +172,18 @@ export function Experience() {
                 <div className="relative p-6 md:p-8">
                   <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                     <div className="flex items-start gap-4">
-                      {/* Company logo placeholder */}
                       <div
-                        className="relative flex h-14 w-14 shrink-0 items-center justify-center border border-border bg-background transition-colors duration-300 group-hover:border-accent-secondary sm:h-16 sm:w-16"
+                        className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden border border-border bg-background transition-colors duration-300 group-hover:border-accent-secondary sm:h-16 sm:w-16"
                         aria-hidden="true"
                       >
                         <div className="bg-grid absolute inset-0" />
-                        <span className="relative font-mono text-[0.65rem] font-bold tracking-widest text-muted-foreground transition-colors duration-300 group-hover:text-accent">
-                          {role.logoInitial}
-                        </span>
+                        <Image
+                          src={role.logoSrc}
+                          alt=""
+                          fill
+                          sizes="64px"
+                          className="relative object-contain p-2"
+                        />
                       </div>
 
                       <div>

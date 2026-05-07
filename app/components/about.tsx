@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "./reveal";
 import { TechMarquee } from "./tech-marquee";
 
@@ -26,13 +27,15 @@ export function About() {
         </h2>
 
         <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-[280px_1fr] md:gap-14 lg:grid-cols-[320px_1fr] lg:gap-16">
-          {/* TODO: replace placeholder with <Image src="/psymon.jpg" ... /> once a photo is provided */}
           <div className="relative aspect-[4/5] w-full overflow-hidden border border-border bg-card">
-            <div className="bg-grid absolute inset-0" aria-hidden="true" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 font-mono text-xs text-muted-foreground">
-              <span className="text-accent">~/photo</span>
-              <span>[ psymon.jpg ]</span>
-            </div>
+            <Image
+              src="/psymon.jpg"
+              alt="Psymon Sez Arcedera"
+              fill
+              sizes="(min-width: 1024px) 320px, (min-width: 768px) 280px, 100vw"
+              className="object-cover"
+              priority
+            />
           </div>
 
           <div className="space-y-4 leading-relaxed">
