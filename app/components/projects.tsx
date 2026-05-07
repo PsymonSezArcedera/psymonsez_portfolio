@@ -83,7 +83,12 @@ const projects: Project[] = [
       { label: "Vercel", icon: SiVercel },
     ],
     highlight: "Indexed search reduced query time on large record sets",
-    links: [{ label: "github", url: "#" }],
+    links: [
+      {
+        label: "github",
+        url: "https://github.com/fofajardo/cmsc128-ics-astra",
+      },
+    ],
     // image: "/projects/ics-astra.png",
   },
   {
@@ -98,7 +103,12 @@ const projects: Project[] = [
       { label: "Naïve Bayes" },
     ],
     highlight: "Published research — SSRN",
-    links: [{ label: "ssrn", url: "#" }],
+    links: [
+      {
+        label: "ssrn",
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5062553",
+      },
+    ],
     // image: "/projects/modeling-merit.png",
   },
 ];
