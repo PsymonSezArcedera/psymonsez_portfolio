@@ -156,6 +156,29 @@
     background-size: 48px 48px;
   }
 
+  /* Brighter accent grid layer used by the cursor spotlight reveal. */
+  .bg-grid-bright {
+    background-image:
+      linear-gradient(to right, rgb(0 255 136 / 0.16) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 255 136 / 0.16) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Cursor-reactive radial mask. The host element exposes --mx/--my as px
+     offsets via JS; the mask reveals only the area near the cursor. */
+  .hero-spotlight {
+    -webkit-mask-image: radial-gradient(
+      circle 320px at var(--mx, 50%) var(--my, 50%),
+      #000 0%,
+      transparent 70%
+    );
+    mask-image: radial-gradient(
+      circle 320px at var(--mx, 50%) var(--my, 50%),
+      #000 0%,
+      transparent 70%
+    );
+  }
+
   /* Blinking terminal cursor — pair with `after:content-['_']` or similar. */
   .terminal-cursor::after {
     content: "_";
@@ -198,5 +221,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
+  }
+  .hero-spotlight {
+    display: none;
   }
 }
