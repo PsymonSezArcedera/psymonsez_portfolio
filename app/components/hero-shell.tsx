@@ -177,7 +177,7 @@ export function HeroShell() {
               key={i}
               className={cn(
                 "leading-6 whitespace-pre-wrap",
-                line.kind === "input" && "text-accent-secondary",
+                line.kind === "input" && "text-accent",
                 line.kind === "error" && "text-destructive",
                 line.kind === "info" && "italic text-muted-foreground",
               )}
@@ -187,7 +187,7 @@ export function HeroShell() {
           ))}
         </div>
         <div className="mt-1 flex items-center gap-2">
-          <span className="shrink-0 text-accent-secondary">{PROMPT}</span>
+          <span className="shrink-0 text-accent">{PROMPT}</span>
           <input
             ref={inputRef}
             value={input}
@@ -197,7 +197,7 @@ export function HeroShell() {
             autoCapitalize="off"
             autoCorrect="off"
             aria-label="terminal input — type 'help' to explore"
-            className="flex-1 bg-transparent text-foreground caret-accent-secondary outline-none placeholder:text-muted-foreground/50"
+            className="flex-1 bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/50"
             placeholder="type a command…"
           />
         </div>
