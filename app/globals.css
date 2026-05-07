@@ -136,6 +136,12 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  /* Anchored sections land below the fixed nav (h-14 = 56px) with breathing
+     room when targeted via #hash links or scrollIntoView. */
+  section[id] {
+    scroll-margin-top: 4rem;
   }
   ::selection {
     background: var(--accent);
