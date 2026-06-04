@@ -71,9 +71,17 @@ function scrollToId(id: string) {
 type HeroShellProps = {
   /** Section ref the window is allowed to roam inside. Drag is disabled if absent. */
   constraintsRef?: RefObject<HTMLElement | null>;
+  /** Anchor span that marks the cursor landing spot inside the input. */
+  landingRef?: RefObject<HTMLSpanElement | null>;
+  /** Hide the idle cursor (used while the hero handoff cursor is in flight). */
+  suppressIdleCursor?: boolean;
 };
 
-export function HeroShell({ constraintsRef }: HeroShellProps) {
+export function HeroShell({
+  constraintsRef,
+  landingRef,
+  suppressIdleCursor = false,
+}: HeroShellProps) {
   const [history, setHistory] = useState<Line[]>([
     {
       kind: "info",
@@ -99,7 +107,7 @@ export function HeroShell({ constraintsRef }: HeroShellProps) {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  const showIdleCursor = !focused && input.length === 0;
+  const showIdleCursor = !focused && input.length === 0 && !suppressIdleCursor;
   const dragEnabled = draggable && Boolean(constraintsRef);
 
   function handleTitleBarPointerDown(e: ReactPointerEvent<HTMLDivElement>) {
@@ -252,6 +260,12 @@ export function HeroShell({ constraintsRef }: HeroShellProps) {
               aria-label="terminal input, type 'help' to explore"
               className="w-full bg-transparent text-foreground caret-accent outline-none placeholder:text-muted-foreground/40"
               placeholder={showIdleCursor ? "" : "type a command…"}
+            />
+            {/* Stable anchor for the hero cursor handoff to land on. */}
+            <span
+              ref={landingRef}
+              aria-hidden="true"
+              className="pointer-events-none absolute left-0 top-1/2 inline-block h-[1em] w-0 -translate-y-1/2"
             />
             {showIdleCursor && (
               <span
