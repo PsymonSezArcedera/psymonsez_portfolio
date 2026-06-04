@@ -72,14 +72,6 @@ export function Experience() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="relative"
         >
-          <span
-            aria-hidden="true"
-            className="absolute -top-10 left-0 hidden h-6 w-px bg-border md:block"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 left-0 hidden h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent md:block"
-          />
           <p className="font-mono text-sm text-muted-foreground">
             // 02. experience
           </p>
@@ -206,15 +198,6 @@ export function Experience() {
                     <span
                       className="flex shrink-0 items-center gap-1.5 self-start border border-accent px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-accent shadow-[0_0_12px_-2px_var(--accent)]"
                     >
-                      {role.current && (
-                        <span
-                          className="relative inline-flex h-1.5 w-1.5"
-                          aria-hidden="true"
-                        >
-                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/80" />
-                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-                        </span>
-                      )}
                       {role.period}
                     </span>
                   </header>

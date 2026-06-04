@@ -39,14 +39,6 @@ export function Contact() {
       className="relative overflow-hidden px-6 py-24 sm:px-10 md:py-32"
     >
       <Reveal className="relative mx-auto max-w-5xl">
-        <span
-          aria-hidden="true"
-          className="absolute -top-10 left-0 hidden h-6 w-px bg-border md:block"
-        />
-        <span
-          aria-hidden="true"
-          className="absolute -top-3 left-0 hidden h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent md:block"
-        />
         <p className="font-mono text-sm text-muted-foreground">
           // 04. contact
         </p>

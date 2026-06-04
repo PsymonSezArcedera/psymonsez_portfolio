@@ -10,14 +10,6 @@ export function About() {
     >
       <Reveal className="relative mx-auto max-w-5xl px-6 sm:px-10">
         <div className="relative">
-          <span
-            aria-hidden="true"
-            className="absolute -top-10 left-0 hidden h-6 w-px bg-border md:block"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 left-0 hidden h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent md:block"
-          />
           <p className="font-mono text-sm text-muted-foreground">
             // 01. about
           </p>
