@@ -275,7 +275,7 @@ export function Projects() {
 
           <div
             ref={rowRef}
-            className="no-scrollbar -mx-6 flex snap-x snap-mandatory items-center gap-4 overflow-x-auto px-6 pb-6 pt-12 sm:mx-0 sm:justify-center sm:gap-6 sm:overflow-visible sm:px-0"
+            className="no-scrollbar -mx-6 flex snap-x snap-mandatory items-center gap-4 overflow-x-auto pb-6 pt-12 pl-[max(1.5rem,calc(50%-6rem))] pr-[max(1.5rem,calc(50%-6rem))] sm:mx-0 sm:justify-center sm:gap-6 sm:overflow-visible sm:px-0"
             role="listbox"
             aria-label="Projects"
             aria-activedescendant={`tile-${focused}`}
