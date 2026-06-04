@@ -47,18 +47,54 @@ export function About() {
               Philippines Los Baños and a DOST-SEI Merit Scholar, but most of
               what I know I&apos;ve learned by shipping. As an AI Software
               Developer Intern at Ten X Development, I&apos;ve helped deploy
-              production AI features across Metro Manila, including
-              pose-detection kiosks running in malls, and built admin
-              dashboard modules used by food chain clients to run their
-              day-to-day operations.
+              production AI features across Metro Manila, including{" "}
+              <strong className="font-semibold text-foreground">
+                pose-detection kiosks
+              </strong>{" "}
+              running in malls, and built{" "}
+              <strong className="font-semibold text-foreground">
+                admin dashboard modules
+              </strong>{" "}
+              used by food chain clients to run their day-to-day operations.
             </p>
             <p className="text-muted-foreground">
-              My work spans full-stack development, mobile apps, and applied
-              AI. React Native and Flutter on the front, Node.js, Python, and
-              Firebase on the back, with production exposure to LLM tooling
-              and computer vision. I care less about chasing every new
-              framework and more about making sure what I build actually
-              works for the user, for the team, and at scale.
+              My work spans{" "}
+              <strong className="font-semibold text-foreground">
+                full-stack development
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-foreground">
+                mobile apps
+              </strong>
+              , and{" "}
+              <strong className="font-semibold text-foreground">
+                applied AI
+              </strong>
+              .{" "}
+              <strong className="font-semibold text-foreground">
+                React Native
+              </strong>{" "}
+              and{" "}
+              <strong className="font-semibold text-foreground">Flutter</strong>{" "}
+              on the front,{" "}
+              <strong className="font-semibold text-foreground">Node.js</strong>
+              ,{" "}
+              <strong className="font-semibold text-foreground">Python</strong>,
+              and{" "}
+              <strong className="font-semibold text-foreground">
+                Firebase
+              </strong>{" "}
+              on the back, with production exposure to{" "}
+              <strong className="font-semibold text-foreground">
+                LLM tooling
+              </strong>{" "}
+              and{" "}
+              <strong className="font-semibold text-foreground">
+                computer vision
+              </strong>
+              . I care less about chasing every new framework and more about
+              making sure what I build actually works for the user, for the
+              team, and at scale.
             </p>
             <p className="text-muted-foreground">
               When I&apos;m not coding, I&apos;m usually at the gym, hanging
