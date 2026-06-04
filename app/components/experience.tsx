@@ -23,14 +23,15 @@ const roles: Role[] = [
   {
     company: "Ten X Development",
     title: "AI Software Developer Intern",
-    period: "Sep 2025 – Present",
+    period: "Sep 2025 – May 2026",
     current: true,
     logFile: "ten-x.log",
     logoSrc: "/ten-x.png",
     bullets: [
-      "Pose-detection kiosks deployed to 5 Metro Manila malls",
-      "6 modules of an admin dashboard for a food chain client",
-      "LLM prompt engineering and evaluation for production features",
+      "Developed 3 of 5 core features for AI-powered interactive kiosks deployed across 5 mall locations in Metro Manila, including pose detectiondriven experiences, boosting consumer engagement with telecom products and services at scale.",
+      "Engineered 6 core modules for a full-featured admin dashboard for a major food chain client: covering orders, menu, inventory, products, customers, and settings, enabling real-time operational control and significantly reducing manual overhead.",
+      " Maintained system stability across multiple production environments through proactive bug fixing and cross-functional collaboration, ensuring consistent performance and on-time delivery.",
+      "Authored and maintained technical documentation for critical system workflows, streamlining team knowledge sharing and improving onboarding efficiency."
     ],
   },
   {
@@ -41,8 +42,9 @@ const roles: Role[] = [
     logoSrc: "/dost.png",
     logoLight: true,
     bullets: [
-      "Records consolidation system across 10 government offices",
-      "Full-stack delivery with Laravel, PHP, and Tailwind",
+      "Built and deployed a full-stack prototype web application consolidating records of 10 government offices and facilities into a single centralized interface, serving staff across multiple DOST regional divisions.",
+      "Implemented 3 core workflows: record creation and updates, search and filtering, and detail views, iterating on usability based on stakeholder feedback to deliver a polished, production-ready system.",
+      "Translated stakeholder requirements into functional features end-to-end, conducting iterative testing and maintaining thorough documentation for long-term maintainability and handoff."
     ],
   },
 ];
@@ -136,11 +138,7 @@ export function Experience() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
                 )}
                 <span
-                  className={`relative inline-flex h-2.5 w-2.5 rounded-full border ${
-                    role.current
-                      ? "border-accent bg-accent shadow-[0_0_10px_var(--accent)]"
-                      : "border-border bg-background"
-                  }`}
+                  className="relative inline-flex h-2.5 w-2.5 rounded-full border border-accent bg-accent shadow-[0_0_10px_var(--accent)]"
                 />
               </span>
 
@@ -206,11 +204,7 @@ export function Experience() {
                     </div>
 
                     <span
-                      className={`flex shrink-0 items-center gap-1.5 self-start border px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider ${
-                        role.current
-                          ? "border-accent text-accent"
-                          : "border-border text-muted-foreground"
-                      }`}
+                      className="flex shrink-0 items-center gap-1.5 self-start border border-accent px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-accent shadow-[0_0_12px_-2px_var(--accent)]"
                     >
                       {role.current && (
                         <span
@@ -243,7 +237,7 @@ export function Experience() {
                           className="font-mono text-accent"
                           aria-hidden="true"
                         >
-                          →
+                          ›
                         </span>
                         <span>{bullet}</span>
                       </motion.li>
