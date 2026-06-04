@@ -20,10 +20,6 @@ export function Footer() {
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           {sha && (
             <>
-              <span>
-                <span className="text-muted-foreground/70">deployed:</span>{" "}
-                {sha}
-              </span>
               <span aria-hidden="true" className="opacity-50">
                 ·
               </span>
